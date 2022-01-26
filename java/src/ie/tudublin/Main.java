@@ -4,19 +4,13 @@ public class Main
 {
     public static void main(String[] args)
     {
-        System.out.println("Hello world");
+        //instance of the cat class
+        Cat ginger = new Cat("Ginger"); 
 
-        Animal misty = new Animal("Misty");
-        Animal lucy = new Animal("Lucy");
+        //killing the cat until he is dead dead lol
+        while(ginger.getNumLives() > 0) {    
+            ginger.kill();
+        }        
 
-        lucy = misty;
-        misty.setName("Tara");
-
-        System.out.println(misty);
-        System.out.println(lucy);
-
-        // Tara Misty
-        // Tara Tara
-        
     }
 }
