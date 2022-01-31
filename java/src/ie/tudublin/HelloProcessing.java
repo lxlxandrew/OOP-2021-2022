@@ -11,57 +11,48 @@ public class HelloProcessing extends PApplet
 	}
 
 	public void setup() {
-		colorMode(HSB);
+		colorMode(RGB); // Red, green blue == HSB is hue, sat, brightness
 		background(0);
-
-		x1 = random(0, width);
-		x2 = random(0, width);
-		y1 = random(0, height);
-		y2 = random(0, height);
-
-		float range = 5;
-
-		x1dir = random(-range, range);
-		x2dir = random(-range, range);
-		y1dir = random(-range, range);
-		y2dir = random(-range, range);
-
-		smooth();
 		
 	}
 
-	float x1, y1, x2, y2;
-	float x1dir, x2dir, y1dir, y2dir;
-	float c = 0;
 	
 	public void draw()
 	{	
-		strokeWeight(2);
-		stroke(c, 255, 255);
-		c = (c + 1f) % 255;
-		line(x1, y1, x2, y2);
+		/* 
+		stroke(0); //outline
+		fill(0, 0, 255);
+		noFill();
+		noStroke();
 
-		x1 += x1dir;
-		x2 += x2dir;
-		y1 += y1dir;
-		y2 += y2dir;
+		background(255, 255, 0); // Greyscale (0 is black, 255 is white)
+		line(10, 10, 200, 200); // x1, y1, x2, y2
+		circle(200, 250, 50); //cx, cy, r
+		ellipse(50, 200, 90, 200); //cx, cy, w, h
+
+		rectMode(CENTER);
+		rect(100, 20, 100, 20); //tlx(top left), tly(top left), w, h
+
+		rectMode(CORNER);
+		rect(300, 20, 100, 20); //tlx(top left), tly(top left), w, h
+
+		point(20, 300); // a single dot
+
+		triangle(10, 400, 50, 450, 300, 200); // x1, y1, x2, y2, x3, y3 (pairs) 
+		*/
+
+		//illuminati symbol exerice
+		background(255,0,0);
+		noStroke();
+		fill(255,255,0);
+		circle(250,250,450);
+		fill(0,255,255);
+		triangle(10,450,490,450,250,5);
+		fill(200);
+		ellipse(250,250,250,100);
+		fill(0);
+		circle(250,250,75);
 		
-		if (x1 < 0 || x1 > width)
-		{
-			x1dir = - x1dir;
-		}
-		if (y1 < 0 || y1 > height)
-		{
-			y1dir = - y1dir;
-		}
-
-		if (x2 < 0 || x2 > width)
-		{
-			x2dir = - x2dir;
-		}
-		if (y2 < 0 || y2 > height)
-		{
-			y2dir = - y2dir;
-		}
+		
 	}
 }
