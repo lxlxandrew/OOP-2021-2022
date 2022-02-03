@@ -2,8 +2,16 @@ package ie.tudublin;
 
 public class Main
 {
-    public static void helloProcessing()
-	{
+
+    private static void BugZap() {
+
+        String[] a = {"MAIN"};
+        processing.core.PApplet.runSketch( a, new BugZap());
+
+    }
+
+    public static void helloProcessing() {
+
 		String[] a = {"MAIN"};
         processing.core.PApplet.runSketch( a, new HelloProcessing());
     }
@@ -31,12 +39,11 @@ public class Main
         cat.kill();
 
     }
-    public static void main(String[] args)
-    {
-        helloProcessing();
+    public static void main(String[] args) {
 
-        // Tara Misty
-        // Tara Tara
-        
+        BugZap();
+        //helloProcessing();   
+
     }
+
 }

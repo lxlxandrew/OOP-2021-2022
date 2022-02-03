@@ -44,12 +44,16 @@ public class HelloProcessing extends PApplet
 		//illuminati symbol exerice
 		background(255,0,0);
 		noStroke();
+
 		fill(255,255,0);
 		circle(250,250,450);
+
 		fill(0,255,255);
 		triangle(10,450,490,450,250,5);
-		fill(200);
+
+		fill(200, 0, 0);
 		ellipse(250,250,250,100);
+
 		fill(0);
 		circle(250,250,75);
 		
