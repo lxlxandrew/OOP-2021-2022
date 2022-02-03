@@ -18,7 +18,7 @@ public class Main
 
     public void cat()
     {
-        System.out.println("Hello world");
+        /* System.out.println("Hello world");
 
         Animal misty = new Animal("Misty");
         Animal lucy = new Animal("Lucy");
@@ -27,7 +27,7 @@ public class Main
         misty.setName("Tara");
 
         System.out.println(misty);
-        System.out.println(lucy);
+        Syst em.out.println(lucy);*/
 
         
         Cat cat = new Cat("Ginger");
