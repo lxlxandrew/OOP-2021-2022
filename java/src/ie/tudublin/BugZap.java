@@ -18,6 +18,7 @@ public class BugZap extends PApplet{
 	public void setup() {
 		colorMode(RGB);
 		background(0);
+        smooth();
 
         playerX = width/2;
         playerY = height - 50;
@@ -100,4 +101,5 @@ public class BugZap extends PApplet{
         bugY++;
         bugX += random(-20, 20);
     }
+
 }
