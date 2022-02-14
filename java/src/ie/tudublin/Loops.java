@@ -125,9 +125,3 @@ public class Loops extends PApplet
 		}
 	}
 }
-//map(a,b,c,d,e);
-//a = inputvalue
-// b - c - start and end of the first range
-// d, e 0 - start and and of the end range
-
-//map(-2, 10, 90, 200, 233);
