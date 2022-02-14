@@ -48,7 +48,8 @@ public class Loops extends PApplet
 		return d + ((howFar / r1) * r2);
 	}
 
-	
+	float offset = 0;
+
 	public void draw()
 	{
 		
@@ -64,17 +65,69 @@ public class Loops extends PApplet
 					fill(map(i, 0, bars, 0, 255), 255, 255);
 					rect(map(i, 0, bars, 0, 500), 0, w, height);
 				}
-				break;
+			break;
 			case 1:
-			
-				break;
-				//map(a,b,c,d,e);
-				//a = inputvalue
-				// b - c - start and end of the first range
-				// d, e 0 - start and and of the end range
+			{
+				background(0);
+				int squares = (int) (mouseX / 20.0f);
+				float h = width / (float) squares;
+				for(int i = 0; i < squares; i ++) 
+				{
+					noStroke();
+					fill(map(i, 0, squares, 0, 255), 255, 255);
+					float x = map(i, 0, squares, 0, width);
+					rect(x, x, h, h);
+					rect((width - h)- x , x, h, h);
+				}
 
-				// map(-2, 10, 90, 200, 233);
+			break;
+			} // put curly brackets around case so we an reuse variables without geting a compiling error
 
+			case 2:
+			{
+				background(255);
+				int circle = (int) (mouseX / 20.0f);
+				float height = width / (float) circle;
+				for(int j = 0; j < circle; j ++){
+					for(int i = 0; i < circle; i ++) 
+					{
+						noStroke();
+						float c = map(i + j, 0, circle * 2, 0, 255); // map the colours
+						fill(c, 255, 255);
+						float x = map(i, 0, circle -1, height / 2, width - (height / 2.0f));
+						float y = map(j, 0, circle -1, height / 2, width - (height / 2.0f));
+						circle(x, y, height);
+					}
+				}
+			break;
+			}
+
+			case 3:
+			{
+				background(255);
+				int circle = (int) (mouseX / 20.0f);
+				offset += (mouseY / 100.0f); 
+				float height = width / (float) circle;
+				for(int j = 0; j < circle; j ++){
+					for(int i = 0; i < circle; i ++) 
+					{
+						noStroke();
+						float c = map(i + j + offset, 0, circle * 2, 0, 255)%256; // map the colours
+						fill(c, 255, 255);
+						float x = map(i, 0, circle -1, height / 2, width - (height / 2.0f));
+						float y = map(j, 0, circle -1, height / 2, width - (height / 2.0f));
+						circle(x, y, height);
+					}
+				}
+			break;
+			}
+				
 		}
 	}
 }
+//map(a,b,c,d,e);
+//a = inputvalue
+// b - c - start and end of the first range
+// d, e 0 - start and and of the end range
+
+//map(-2, 10, 90, 200, 233);
