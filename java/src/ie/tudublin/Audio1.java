@@ -13,24 +13,29 @@ public class Audio1 extends PApplet
     AudioInput ai;
     AudioBuffer ab;
 
-    public void settings(){
+    public void settings()
+    {
         size(1024, 500);
     }
-    
-    public void setUp(){
+
+    public void setup()
+    {
         minim = new Minim(this);
         ai = minim.getLineIn(Minim.MONO, width, 44100, 16);
-        ab = ai.mix;
+        ab = ai.mix; 
     }
 
-    public void draw(){
+    public void draw()
+    {
         background(0);
         stroke(255);
-        float halfh = height / 2;
-        for(int i = 0; i < ab.size(); i ++){
-            line(i, halfh, i, halfh + ab.get(i) * halfh);
+        float halfH = height / 2;
+        for(int i = 0 ; i < ab.size() ; i ++)
+        {
+            line(i, halfH, i, halfH + ab.get(i) * halfH);
         }
     }
+    
 
+    
 }
-
