@@ -6,7 +6,7 @@ public class LifeBoard {
     
     boolean[][] board;
     int size;
-    int cellSize;
+    float cellSize;
     PApplet pa;
 
     public LifeBoard(int size, PApplet pa)
@@ -46,7 +46,7 @@ public class LifeBoard {
                 float x = pa.map(col, 0, size, 0, pa.width);
                 float y = pa.map(row, 0, size, 0, pa.width);
                 x = cellSize * col;
-                x = cellSize * row;
+                y = cellSize * row;
 
                 if(board[row][col])
                 {
