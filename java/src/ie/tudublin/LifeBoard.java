@@ -5,6 +5,7 @@ import processing.core.PApplet;
 public class LifeBoard {
     
     boolean[][] board;
+    boolean[][] nextBoard;
     int size;
     float cellSize;
     PApplet pa;
@@ -32,6 +33,80 @@ public class LifeBoard {
                     // or can write like this :board[row][col] = pa.random(1.0f) > 0.5f;
                 }
             }
+        }
+    }
+
+    public void update()
+    {
+        for(int row = 0; row < size; row ++)
+        {
+            for(int col = 0; col < size; row ++)
+            {
+                int count = countCellsAround(row, col);
+
+                    if(isAlive(row, col))
+                    {
+                        if(count == 2 || count == 3)
+                        {
+                            nextBoard[row][col] = true;
+                        }
+                        else 
+                        {
+                            nextBoard[row][col] = false;
+                        }
+                    }
+                    else
+                    {
+                        if(count == 3)
+                        {
+                            nextBoard[row][col] = true;
+                        }
+                        else 
+                        {
+                            nextBoard[row][col] = false;
+                        }
+                    }
+            }
+        }
+
+        //swapping the boards
+        boolean[][] temp;
+        temp = board;
+        board = nextBoard;
+        nextBoard = temp;
+    }
+
+    public int countCellsAround(int row, int col)
+    {
+        int count = 0;
+
+        //i=row and j=col
+        for(int i = row-1; i <= row+1; i++)
+        {
+            for(int j = col-1; j <= col+1; j++)
+            {
+                if(! (i == row && j == col)) //not counting itself 
+                {
+                    if(isAlive(i ,j))
+                    {
+                        count++;
+                    }
+                }
+            }
+        }
+
+        return count;
+    }
+
+    public boolean isAlive(int row, int col)
+    {
+        if(row >= 0 && row < size && col >= 0 && col<size)
+        {
+            return board[row][col];
+        }
+        else
+        {
+            return false;
         }
     }
 
