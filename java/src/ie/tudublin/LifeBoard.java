@@ -13,6 +13,7 @@ public class LifeBoard {
     public LifeBoard(int size, PApplet pa)
     { 
         board = new boolean[size][size];
+        nextBoard = new boolean[size][size];
         this.size = size;
         this.pa = pa;
         cellSize = pa.width / (float) size;
@@ -25,13 +26,7 @@ public class LifeBoard {
         {
             for(int col = 0; col < size; col++)
             {
-                float dice = pa.random(1.0f);
-                if (dice < 0.5f)
-                {
-                    //[row][col]
-                    board[row][col] = true;
-                    // or can write like this :board[row][col] = pa.random(1.0f) > 0.5f;
-                }
+                board[row][col] = pa.random(1.0f) > 0.5f;
             }
         }
     }
@@ -81,9 +76,9 @@ public class LifeBoard {
         int count = 0;
 
         //i=row and j=col
-        for(int i = row-1; i <= row+1; i++)
+        for(int i = row - 1; i <= row + 1; i++)
         {
-            for(int j = col-1; j <= col+1; j++)
+            for(int j = col - 1; j <= col + 1; j++)
             {
                 if(! (i == row && j == col)) //not counting itself 
                 {
@@ -100,7 +95,7 @@ public class LifeBoard {
 
     public boolean isAlive(int row, int col)
     {
-        if(row >= 0 && row < size && col >= 0 && col<size)
+        if(row >= 0 && row < size && col >= 0 && col < size)
         {
             return board[row][col];
         }
@@ -118,8 +113,8 @@ public class LifeBoard {
         {
             for(int col = 0; col < size; col++)
             {
-                float x = pa.map(col, 0, size, 0, pa.width);
-                float y = pa.map(row, 0, size, 0, pa.width);
+                float x = PApplet.map(col, 0, size, 0, pa.width);
+                float y = PApplet.map(row, 0, size, 0, pa.width);
                 x = cellSize * col;
                 y = cellSize * row;
 
@@ -128,15 +123,14 @@ public class LifeBoard {
                     pa.fill(0, 0, 255);
 
                 }
-                else{
+                else
+                {
                     pa.noFill();
                 }
 
                 pa.rect(x, y, cellSize, cellSize);
             }
         }
-        
-
 
     }
 
