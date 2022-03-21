@@ -3,20 +3,14 @@ package ie.tudublin;
 import processing.core.PApplet;
 
 public class LifeBoard {
-<<<<<<< HEAD
     
     boolean[][] board;
     boolean[][] nextBoard;
-=======
-    boolean[][] board;
-    boolean[][] next;
->>>>>>> 9884d0309b73c9303e4ddb13071af0718ac1ecf9
     int size;
     float cellSize;
     PApplet pa;
 
     public LifeBoard(int size, PApplet pa)
-<<<<<<< HEAD
     { 
         board = new boolean[size][size];
         nextBoard = new boolean[size][size];
@@ -24,27 +18,13 @@ public class LifeBoard {
         this.pa = pa;
         cellSize = pa.width / (float) size;
         
-=======
-    {
-        board = new boolean[size][size];
-        next = new boolean[size][size];
-        this.size = size;
-        this.pa = pa;
-        cellSize = pa.width / (float) size;
->>>>>>> 9884d0309b73c9303e4ddb13071af0718ac1ecf9
     }
 
     public void randomise()
     {
-<<<<<<< HEAD
         for(int row = 0; row < size; row++)
         {
             for(int col = 0; col < size; col++)
-=======
-        for(int row = 0 ; row < size ; row ++)
-        {
-            for(int col = 0 ; col < size ; col ++)
->>>>>>> 9884d0309b73c9303e4ddb13071af0718ac1ecf9
             {
                 board[row][col] = pa.random(1.0f) > 0.5f;
             }
@@ -95,7 +75,6 @@ public class LifeBoard {
     {
         int count = 0;
 
-<<<<<<< HEAD
         //i=row and j=col
         for(int i = row - 1; i <= row + 1; i++)
         {
@@ -106,19 +85,6 @@ public class LifeBoard {
                     if(isAlive(i ,j))
                     {
                         count++;
-=======
-        // Your bit goes here!
-
-        for(int i = row - 1 ; i <= row + 1 ; i ++)
-        {
-            for(int j = col -1 ; j <= col + 1; j ++)
-            {
-                if (! (i == row && j == col))
-                {
-                    if (isAlive(i, j))
-                    {
-                        count ++;
->>>>>>> 9884d0309b73c9303e4ddb13071af0718ac1ecf9
                     }
                 }
             }
@@ -129,15 +95,9 @@ public class LifeBoard {
 
     public boolean isAlive(int row, int col)
     {
-<<<<<<< HEAD
         if(row >= 0 && row < size && col >= 0 && col < size)
         {
             return board[row][col];
-=======
-        if (row >= 0 && row < size && col >= 0 && col < size)
-        {
-            return board[row][col]; 
->>>>>>> 9884d0309b73c9303e4ddb13071af0718ac1ecf9
         }
         else
         {

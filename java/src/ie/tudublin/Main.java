@@ -72,14 +72,6 @@ public class Main
     }
     public static void main(String[] args)
     {
-<<<<<<< HEAD
         Life();
-=======
-        life();
-
-        // Tara Misty
-        // Tara Tara
->>>>>>> 9884d0309b73c9303e4ddb13071af0718ac1ecf9
-        
     }
 }
