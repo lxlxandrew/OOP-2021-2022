@@ -4,11 +4,6 @@ package ie.tudublin;
 
 public class Main
 {
-    public static void Audio1()
-	{
-		String[] a = {"MAIN"};
-        processing.core.PApplet.runSketch( a, new Audio1());
-    }
 
     public static void helloProcessing()
 	{
@@ -47,6 +42,18 @@ public class Main
         processing.core.PApplet.runSketch( a, new Audio1());
     }
 
+    public static void audio2()
+	{
+		String[] a = {"MAIN"};
+        processing.core.PApplet.runSketch( a, new Audio2());
+    }
+
+    public static void colorfulLife()
+	{
+		String[] a = {"MAIN"};
+        processing.core.PApplet.runSketch( a, new ColorfulLife());
+    }
+
     public void cat()
     {
         System.out.println("Hello world");
@@ -72,14 +79,7 @@ public class Main
     }
     public static void main(String[] args)
     {
-<<<<<<< HEAD
-        Audio1();
-=======
-        life();
-
-        // Tara Misty
-        // Tara Tara
->>>>>>> 4ecfe9fa256b4d7ea5793db63aa8b2232324a707
+        audio2();
         
     }
 }
