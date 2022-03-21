@@ -9,7 +9,7 @@ import processing.core.PApplet;
 
 /*
 
-[fur-re-ayy] Analysis
+Fourier Analysis
 
 the infinite number of waves make up the mins, and all minds are made up of these waves which then interact with one 
 another, science is not supposed to give meaning the ones life or the reason behind their existence; science only explains the testa..
@@ -56,11 +56,11 @@ public class Audio2 extends PApplet
     {
         minim = new Minim(this);
         // Uncomment this to use the microphone
-        ai = minim.getLineIn(Minim.MONO, width, 44100, 16);
-        ab = ai.mix; 
-        // ap = minim.loadFile("heroplanet.mp3", 1024);
-        //ap.play();
-        //ab = ap.mix;
+        //ai = minim.getLineIn(Minim.MONO, width, 44100, 16);
+        //ab = ai.mix; 
+        ap = minim.loadFile("heroplanet.mp3", 1024);
+        ap.play();
+        ab = ap.mix;
         colorMode(RGB);
 
         fft = new FFT(1024, 44100);
@@ -95,7 +95,7 @@ public class Audio2 extends PApplet
         }
 
         //fill out the mising code!!
-        
+
 
         int maxIndex = 0;
         float freq = fft.indexToFreq(maxIndex);
@@ -103,7 +103,7 @@ public class Audio2 extends PApplet
         fill(255);
         text("Freq: " + freq, 100, 200);
 
-
+        
 
         //lerping ???
         

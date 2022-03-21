@@ -79,7 +79,8 @@ public class Main
     }
     public static void main(String[] args)
     {
-        audio2();
-        
+        //colorfulLife();
+        //audio2();
+        bugZap();
     }
 }
