@@ -11,6 +11,12 @@ public class Main
         processing.core.PApplet.runSketch( a, new HelloProcessing());
     }
 
+    public static void starMap()
+	{
+		String[] a = {"MAIN"};
+        processing.core.PApplet.runSketch( a, new StarMap());
+    }
+
     public static void bugZap()
 	{
 		String[] a = {"MAIN"};
@@ -35,6 +41,12 @@ public class Main
         processing.core.PApplet.runSketch( a, new Life());
     }
 
+    public static void timing()
+	{
+		String[] a = {"MAIN"};
+        processing.core.PApplet.runSketch( a, new TimingExample());
+    }
+
 
     public static void audio1()
 	{
@@ -52,6 +64,12 @@ public class Main
 	{
 		String[] a = {"MAIN"};
         processing.core.PApplet.runSketch( a, new ColorfulLife());
+    }
+
+    public static void YASC()
+	{
+		String[] a = {"MAIN"};
+        processing.core.PApplet.runSketch( a, new YASC());
     }
 
     public void cat()
@@ -79,8 +97,10 @@ public class Main
     }
     public static void main(String[] args)
     {
-        //colorfulLife();
-        //audio2();
-        bugZap();
+        YASC();
+
+        // Tara Misty
+        // Tara Tara
+        
     }
 }

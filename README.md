@@ -23,8 +23,8 @@ Resources
 - [Assignments](assignments.md)
 
 - Week 5 - Teams Submission
-- Week 11 Lab Test 20% 
-- Week 13 Assignment Submission - 30%
+- 27 April - Lab Test 20% 
+- 4th May Assignmemnt Submission - 30%
 - End of Year exam - 50%
 
 # Last years course
@@ -39,7 +39,134 @@ Resources
 - https://github.com/skooter500/OOP_Labtest1_2017_Starter
 - https://github.com/skooter500/OOP-LabTest1-2016
 
-## Week 7 - Conways Game of Life
+## Week 11 - YASC Part 1
+- [Recording of the class](https://tudublin-my.sharepoint.com/:v:/g/personal/bryan_duggan_tudublin_ie/Edu2JUxUJnpNk0DJum_UHIoBNnXLW71f-De16xyCEu9L-w?e=orgOaw)
+
+- [Recording of the tutorial](https://tudublin-my.sharepoint.com/:v:/g/personal/bryan_duggan_tudublin_ie/EdnREXh-iZVFmXzkZY34zNABey4G2mDiORbj42WohFMkFw?e=7WhKLI)
+
+A couple of solutions to [this codingbat exercise](https://codingbat.com/prob/p105771)
+
+My solution:
+
+```Java
+public int[] evenOdd(int[] nums) {
+  int swaps = 0;
+  do
+  {
+    swaps = 0;
+   for(int i = 0 ; i < nums.length -1 ; i ++)
+   {
+     if (nums[i] % 2 != 0 && nums[i+1] % 2 == 0)
+     {
+       int temp = nums[i];
+       nums[i] = nums[i + 1];
+       nums[i+1] = temp;
+       swaps ++;
+     }
+   }
+  }
+  while (swaps > 0);
+ return nums;
+}
+```
+
+Submitted by Ho Chung:
+
+```Java
+public int[] evenOdd(int[] nums) {
+  int temp[] = new int[nums.length];
+  int start = 0;
+  int end = nums.length - 1;
+  for (int i = 0; i < nums.length; i ++){
+    if (nums[i] % 2 == 0) {
+      temp[start] = nums[i];
+      start++;
+    }
+    else {
+      temp[end] = nums[i];
+      end--;
+    }
+  }
+  return temp;
+}
+```
+
+Submitted by Christina Vargka:
+
+```Java
+public int[] evenOdd(int[] nums) {
+int counter = 0;
+int[] evods = new int[nums.length];
+for(int i = 0; i < nums.length; i++){
+if(nums[i] % 2 == 0){
+evods[counter] = nums[i];
+counter++;
+}
+}
+for(int i = 0; i < nums.length; i++){
+if(nums[i] % 2 == 1){
+evods[counter] = nums[i];
+counter++;
+}
+}
+return evods;
+}
+```
+
+## Lab
+- Work on your assignments!
+
+## Week 10 - Loading and visualising a dataset - Star Map example
+- [Recording of the class](https://tudublin-my.sharepoint.com/:v:/g/personal/bryan_duggan_tudublin_ie/EcgrS0Sh8v1CgiN9-HHlXBkBs7LHTxG8L08S1HLac0QKfQ?e=9Vxemq)
+- [Link to the original lab test](https://github.com/skooter500/OOP-LabTest1-2016)
+
+### Lab
+- Complete the lab test from Monday's class!
+- Try out [last years test](https://github.com/skooter500/OOP-Test-2021-Starter)
+
+## Week 9 - Digital Audio - Part 2
+- [Recording of the class](https://tudublin-my.sharepoint.com/:v:/g/personal/bryan_duggan_tudublin_ie/Eete7lQb5h9GhcLM6Ln_xC4B7WS3JPl-f4Mn0XTBLv6ydA?e=sid5gi)
+
+### Lab
+
+Update your forks to get the code we wrote on Monday!
+
+When we take a frequency and get the note name for that frequency, this is called "spelling" the frequency. Here is some Java code for the frequencies of the notes in several octaves of the the D Major scale. For musicians in the class, you will know that D Major has 2 sharps. F# and C#, so the frequencies for the notes F and C are those for F# and C#
+
+```Java
+float[] frequencies = {293.66f, 329.63f, 369.99f, 392.00f, 440.00f, 493.88f, 554.37f, 587.33f
+			, 659.25f, 739.99f, 783.99f, 880.00f, 987.77f, 1108.73f, 1174.66f};
+	String[] spellings = {"D,", "E,", "F,", "G,", "A,", "B,", "C", "D", "E", "F", "G", "A", "B","c", "d", "e", "f", "g", "a", "b", "c'", "d'", "e'", "f'", "g'", "a'", "b'", "c''", "d''"};
+```
+-  Write a class called PitchSpeller that has the above 2 arrays as fields. It should have a method ```public String spell(float frequency)``` that takes a frequency as a parameter and returns the spelling which is *closest* to that frequency. Test your solution by adding code to the main method. For example:
+
+```Java
+PitchSpeller ps = new PitchSpeller();
+System.out.println(ps.spell(330));
+System.out.println(ps.spell(420));
+System.out.println(ps.spell(1980));
+```
+
+Should print:
+
+```
+E,
+A,
+b
+```
+
+You can use the ```Math.abs``` method in your solution to get the absolute value of a number.
+
+Now you can use the PitchSpeller class with the code we wrote on Monday and you will have made a simple transcription system.
+
+Here is a video of what your finished program might look like:
+
+[![YouTube](http://img.youtube.com/vi/bfLVzCD2UC0/0.jpg)](https://youtu.be/bfLVzCD2UC0)
+
+## Week 8 - Review Week
+- No classes
+
+## Week 7 - Conway's Game of Life
 ### Lecture
 - [Recording of the class](https://tudublin-my.sharepoint.com/:v:/g/personal/bryan_duggan_tudublin_ie/EVSYi7mI1y9Hgjgq3ibl4yEBRBEUzJyWLEiwIoLWkmR21g?e=Z6Bidf)
 
