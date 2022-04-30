@@ -8,7 +8,6 @@ public class caAssignment extends PApplet
 
     Minim minim;
     AudioPlayer heaven;
-    AudioBuffer audioBuff;
 
     int mode = 0;
 
@@ -20,6 +19,8 @@ public class caAssignment extends PApplet
 
     float off = 0;
     
+    float n4;
+    float n6;
 
     public void keyPressed() {
 		if (key >= '0' && key <= '9') {
@@ -65,40 +66,46 @@ public class caAssignment extends PApplet
         off += 1;
         // Calculate sum and average of the samples
         // Also lerp each element of buffer;
-        for(int i = 0 ; i < audioBuff.size() ; i ++)
+        for(int i = 0 ; i < heaven.bufferSize(); i ++)
         {
-            sum += abs(audioBuff.get(i));
-            lerpedBuffer[i] = lerp(lerpedBuffer[i], audioBuff.get(i), 0.05f);
+            sum += abs(heaven.bufferSize());
+            lerpedBuffer[i] = lerp(lerpedBuffer[i], heaven.bufferSize(), 0.05f);
         }
-        average= sum / (float) audioBuff.size();
+        average= sum / (float) heaven.bufferSize();
 
         smoothedAmplitude = lerp(smoothedAmplitude, average, 0.1f);
         
+
         float cx = width / 2;
         float cy = height / 2;
+        
 
         switch (mode) {
 			case 0:
                 background(0);
-                for(int i = 0 ; i < audioBuff.size() ; i ++)
+                
+                for(int i = 0 ; i < heaven.bufferSize() ; i ++)
                 {
                     //float c = map(ab.get(i), -1, 1, 0, 255);
-                    float c = map(i, 0, audioBuff.size(), 0, 255);
+                    float c = map(i, 0, heaven.bufferSize(), 0, 255);
                     stroke(c, 255, 255);
                     float f = lerpedBuffer[i] * halfH * 4.0f;
                     line(i, halfH + f, i, halfH - f);                    
                 }
+                
                 break;
             case 1:
                 background(0);
-                for(int i = 0 ; i < audioBuff.size() ; i ++)
+                
+                for(int i = 0 ; i < heaven.bufferSize() ; i ++)
                 {
                     //float c = map(ab.get(i), -1, 1, 0, 255);
-                    float c = map(i, 0, audioBuff.size(), 0, 255);
+                    float c = map(i, 0, heaven.bufferSize(), 0, 255);
                     stroke(c, 255, 255);
                     float f = lerpedBuffer[i] * halfH * 4.0f;
                     line(i, halfH + f, halfH - f, i);                    
                 }
+                
                 break;
             case 2:
                 {
@@ -140,10 +147,10 @@ public class caAssignment extends PApplet
                 {
                     background(0);
                     strokeWeight(2);
-                    for(int i = 0 ; i < audioBuff.size() ; i +=10)
+                    for(int i = 0 ; i < heaven.bufferSize() ; i +=10)
                     {
                         //float c = map(ab.get(i), -1, 1, 0, 255);
-                        float cc = map(i, 0, audioBuff.size(), 0, 255);
+                        float cc = map(i, 0, heaven.bufferSize(), 0, 255);
                         stroke(cc, 255, 255);
                         float f = lerpedBuffer[i] * halfH * 4.0f;
                         line(i, halfH + f, i, halfH - f);
@@ -172,6 +179,46 @@ public class caAssignment extends PApplet
                     
                     rect( 0, 0, heaven.left.level()*width, 100 );
                     rect( 0, 100, heaven.right.level()*width, 100 );
+                }
+                break;
+            case 6:
+                {
+                    noCursor();
+                    smooth();
+                    background (0);
+                    frameRate(24);
+
+                    fill(0,50);  
+                    noStroke();
+                    rect(0, 0, width, height);
+                    translate(width/2, height/2);
+                    
+                    for (int i = 0; i < heaven.bufferSize() - 1; i++) {
+                    
+                        float angle = sin(i+n4)* 10; 
+                        float angle2 = sin(i+n6)* 300; 
+                        
+                        float x = sin(radians(i))*(angle2+30); 
+                        float y = cos(radians(i))*(angle2+30);
+                        
+                        float x3 = sin(radians(i))*(500/angle); 
+                        float y3 = cos(radians(i))*(500/angle);
+                        
+                        fill (128,0,128); // purple
+                        ellipse(x, y, heaven.left.get(i)*10, heaven.left.get(i)*10);
+                        
+                        fill (255,255,255); // white
+                        rect(x3, y3, heaven.left.get(i)*20, heaven.left.get(i)*10);
+                        
+                        fill (186,85,211); // medium orchid
+                        rect(x, y, heaven.right.get(i)*10, heaven.left.get(i)*10);
+                        
+                        fill(255,255,255); // white
+                        rect(x3, y3, heaven.right.get(i)*10, heaven.right.get(i)*20);
+                    }  
+
+                    n4 += 0.008;
+                    n6 += 0.04;
                 }
                 break;
 
