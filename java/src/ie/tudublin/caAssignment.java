@@ -8,10 +8,25 @@ public class caAssignment extends PApplet
 
     Minim minim;
     AudioPlayer heaven;
+    int mode = 0;
+
+    public void keyPressed() {
+		if (key >= '0' && key <= '9') {
+			mode = key - '0';
+		}
+		if (keyCode == ' ') {
+            if (heaven.isPlaying()) {
+                heaven.pause();
+            } else {
+                heaven.rewind();
+                heaven.play();
+            }
+        }
+	}
 
     public void settings() 
     {
-        size(1024, 200);
+        size(1024, 600);
     }
 
     public void setup()
@@ -20,6 +35,8 @@ public class caAssignment extends PApplet
         minim = new Minim(this);
         heaven = minim.loadFile("differentheaven.mp3", 1024);
         heaven.loop();
+
+        colorMode(RGB);
     }
 
     public void draw()
