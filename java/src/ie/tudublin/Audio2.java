@@ -36,7 +36,6 @@ public class Audio2 extends PApplet
     float smoothedY = 0;
     float smoothedAmplitude = 0;
 
-    FFT fft;
 
     public void keyPressed() {
 		if (key >= '0' && key <= '9') {
@@ -62,19 +61,11 @@ public class Audio2 extends PApplet
     {
         minim = new Minim(this);
         // Uncomment this to use the microphone
-<<<<<<< HEAD
-        //ai = minim.getLineIn(Minim.MONO, width, 44100, 16);
-        //ab = ai.mix; 
-        ap = minim.loadFile("heroplanet.mp3", 1024);
-        ap.play();
-        ab = ap.mix;
-=======
         ai = minim.getLineIn(Minim.MONO, width, 44100, 16);
         ab = ai.mix; 
         //ap = minim.loadFile("heroplanet.mp3", 1024);
         //ap.play();
         //ab = ap.mix;
->>>>>>> d6ce88f34a71ecc280a1d3ae05ecf511dbb24302
         colorMode(RGB);
 
         fft = new FFT(1024, 44100);
@@ -89,18 +80,6 @@ public class Audio2 extends PApplet
 
     public void draw()
     {
-<<<<<<< HEAD
-        //just a simple line connected with the audio
-        background(0);
-        stroke(255);
-        float halfH = height / 2;
-        for(int i = 0; i < ab.size(); i ++)
-        {
-            line(i, halfH, i, halfH + ab.get(i) * halfH);
-        }
-        //simple ex ends here
-        
-=======
         background(0);
         stroke(255);
         float halfH = height / 2;
@@ -109,37 +88,10 @@ public class Audio2 extends PApplet
             line(i, halfH, i, halfH + ab.get(i) * halfH);
         }
 
->>>>>>> d6ce88f34a71ecc280a1d3ae05ecf511dbb24302
         fft.window(FFT.HAMMING);
         fft.forward(ab);
 
         stroke(0, 255, 0);
-<<<<<<< HEAD
-        for(int i = 0; i < fft.specSize(); i++)
-        {
-            line(i, 0, i, fft.getBand(i) * 10);
-        }
-
-        //fill out the mising code!!
-
-
-        int maxIndex = 0;
-        float freq = fft.indexToFreq(maxIndex);
-        textSize(20);
-        fill(255);
-        text("Freq: " + freq, 100, 200);
-
-        
-
-        //lerping ???
-        
-        // Other examples we made in the class
-        /*
-        stroke(255);
-        fill(100, 255, 255);        
-        
-        circle(width / 2, halfH, lerpedA * 100);
-=======
         for(int i = 0 ; i < fft.specSize(); i ++)
         {
             line(i, 0, i,fft.getBand(i) * 10);
@@ -147,7 +99,6 @@ public class Audio2 extends PApplet
 
 
         int maxIndex = 0;
->>>>>>> d6ce88f34a71ecc280a1d3ae05ecf511dbb24302
 
         for(int i = 0 ; i < fft.specSize(); i ++)
         {
