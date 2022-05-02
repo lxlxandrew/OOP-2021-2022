@@ -1,4 +1,4 @@
-package ie.tudublin;
+package ie.tudublin.Laura;
 
 import ddf.minim.*;
 import processing.core.PApplet;
@@ -19,7 +19,7 @@ public class caAssignment extends PApplet
     float off = 0;
     
 
-    //for case 6
+    //for speaker circle thingy
     float n4;
     float n6;
 
@@ -45,7 +45,8 @@ public class caAssignment extends PApplet
 
     public void settings() 
     {
-        size(1024, 600);
+        //size(1024, 600);
+        fullScreen(P3D, SPAN);
     }
 
     public void setup()
@@ -69,6 +70,7 @@ public class caAssignment extends PApplet
         float average = 0;
         float sum = 0;
         off += 1;
+        
         // Calculate sum and average of the samples
         // Also lerp each element of buffer;
         for(int i = 0 ; i < heaven.bufferSize(); i ++)
@@ -77,6 +79,11 @@ public class caAssignment extends PApplet
             lerpedBuffer[i] = lerp(lerpedBuffer[i], heaven.bufferSize(), 0.05f);
         }
         average = sum / (float) heaven.bufferSize();
+
+        smoothedAmplitude = lerp(smoothedAmplitude, average, 0.1f);
+
+        float cx = width / 2;
+        float cy = height / 2;
         
 
         switch (mode) {
@@ -167,7 +174,7 @@ public class caAssignment extends PApplet
                     }
                     
                     noStroke();
-                    fill( 255, 128 );
+                    fill(186,85,211);
                     
                     rect( 0, 0, heaven.left.level()*width, 100 );
                     rect( 0, 100, heaven.right.level()*width, 100 );
@@ -203,18 +210,49 @@ public class caAssignment extends PApplet
                 break;
             case 5:
                 {
+                    background(100);
+                    
+                    noStroke();
+                    fill(50);
+                    push();
+                    translate(-275, 175);
+                    rotateY((float) 1.25);
+                    rotateX((float) -0.9);
+                    box(100);
+                    pop();
 
+                    noFill();
+                    stroke(255);
+                    push();
+                    translate(500, (float) (height * 0.35), -200);
+                    sphere(300);
+                    pop();
                 }
                 break;
             case 6:
                 {
-                    
+                    //soundwave
+                    background(0);
+                    for(int i = 0 ; i < heaven.bufferSize() ; i ++)
+                    {
+                        //float c = map(ab.get(i), -1, 1, 0, 255);
+                        float c = map(i, 0, heaven.bufferSize(), 0, 255);
+                        stroke(c, 255, 255);
+                        float f = lerpedBuffer[i] * halfH * 4.0f;
+                        line(i, halfH + f, i, halfH - f);                    
+                    }
                 }
                 break;
             case 7:
                 {
-                    
-
+                    // moving circle
+                    background(0);
+                    strokeWeight(2);
+                    noFill();
+                    float r = map(smoothedAmplitude, 0, 0.5f, 100, 2000);
+                    float c = map(smoothedAmplitude, 0, 0.5f, 0, 255);
+                    stroke(c, 255, 255);
+                    circle(cx, cy, r);
                 }
                 break;
             

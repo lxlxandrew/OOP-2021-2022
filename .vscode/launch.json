@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch Snake",
+            "request": "launch",
+            "mainClass": "ie.tudublin.Laura.Snake",
+            "projectName": "java"
+        },
+        {
+            "type": "java",
             "name": "Launch Main",
             "request": "launch",
             "mainClass": "ie.tudublin.Main",
